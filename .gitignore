@@ -1,0 +1,5 @@
+Code/SSDFA/.idea/
+Code/SSDFA/out/
+Data/*.fna
+Data/*.dat
+*.iml

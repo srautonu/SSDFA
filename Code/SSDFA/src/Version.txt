@@ -1,0 +1,37 @@
+External Dependencies
+---------------------
+
+For fast calculation of suffix-prefix overlap, we used Generalized Suffix Tree implementation from https://travis-ci.org/abahgat/suffixtree with minor modifications.
+For convenience, the implementation is checked in here as well.
+
+
+Version: 2.2.2016.0521
+----------------------
+
+Key Changes:
+Modified code to perform 10 runs of Scatter search. We will store the run data in results.txt file. We will use it in our paper
+
+
+Version: 2.1.2016.0502
+----------------------
+
+Key Changes:
+Modified HC terminating condition. Instead of running for specified number of iterations, it terminates after a specified number of iterations passed without further improvements to the solution.
+
+Playing with tournament selection (instead of most diverse) for the diverse population. We have the following findings:
+- Scatter Search performs well if exploitative mutation and tournament selections are removed
+
+- However, interestingly, if HC uses exploitative mutation (which provides a scattering effect) and tournament selection is applied to find fit individuals (which also provides scattering effect), then setting m (size of diverse population) = 0 provides best result! Which is counter intuitive. However, after large number of iterations (200+) traditional Scatter search outperforms this.
+
+- Divide by contig out does have an effect. Compared to traditional fitness function, our proposed one reduces the number of contigs, but also degrades the overlap count. However, the % improvement in contig count is much more than the % degradation in overlap count
+
+
+Version: 2.0.2016.0502
+----------------------
+
+Key Changes:
+Removed dependency on OverlapArray. The array calculation was incorrect anyways. Plus we needed to take into consideration the RC strands. We have now incorporated generalized suffix tree to get the all pair suffix prefix scores.
+ 
+Modified PDistance measure. Normalized it to [0-1] range.
+ 
+Re-ran all the experiements based on the changes.
