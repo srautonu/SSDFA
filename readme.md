@@ -2,15 +2,13 @@
 This is the repository for Scatter Search for DNA Fragment Assembly tool (SS-DFA).
 
 # Usage
-java ScatterSearch <input_fragment_file> <output_file>
+java ScatterSearch input_fragment_file output_file
 
 The output file will contain data from 10 runs. Each line contains:
-<RunId> <fitness> <totalOverlap> <ContigCount> <WallClockTime>
+RunId fitness totalOverlap ContigCount WallClockTime
 
 # configuration
-Default configuration is already hard-coded in the source code. The default (tuned) values are specified in the paper.
-Certain configurations can be overridden using a config.txt file. The file should be placed in the current directory (i.e. the directory
-from where the ScatterSearch class gets loaded).
+Default configuration is already hard-coded in the source code. The default (tuned) values are specified in the paper. Certain configurations can be overridden using a config.txt file. The file should be placed in the current directory (i.e. the directory from where the ScatterSearch class gets loaded).
 
 A sample configuration file is available in the /Code/SSDFA/src folder. The sample also uses default values, but can be changed by the user as needed.
 
