@@ -1,0 +1,13 @@
+n=30
+m=20
+HCIteration=500
+thresholdweight=0.20
+totaltime=200
+diversity=PDistance
+
+
+
+
+
+
+

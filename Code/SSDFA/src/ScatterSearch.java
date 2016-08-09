@@ -30,12 +30,21 @@ public class ScatterSearch {
         long threshold = 0;
         long totalLength = 0;
         long totalOverlap = 0;
-        String diversityMeasure = "";
-        int n = 10, m = 5;
+
+        //
+        // Default configuration. Can be overridden by using
+        // configuration file (config.txt). The file should
+        // be placed in the current directory (i.e. the directory
+        // from where the ScatterSearch class gets loaded).
+        //
+        int n = 30;
+        int m = 20;
+        int nHCIter = 500;
+        double thresholdWeight = 0.20;
+        int totalTime = 200;
+        String diversityMeasure = "PDistance";
+
         int popSize = n + m;
-        long nHCIter = 20;
-        int totalTime = 10;
-        double thresholdWeight = 0.10;
 
         try {
             Properties prop = new Properties();
@@ -45,7 +54,7 @@ public class ScatterSearch {
             n = Integer.parseInt(prop.getProperty("n"));
             m = Integer.parseInt(prop.getProperty("m"));
             popSize = n + m;
-            nHCIter = Long.parseLong(prop.getProperty("HCIteration"));
+            nHCIter = Integer.parseInt(prop.getProperty("HCIteration"));
             thresholdWeight = Double.parseDouble(prop.getProperty("thresholdweight"));
             totalTime = Integer.parseInt(prop.getProperty("totaltime"));
             diversityMeasure = prop.getProperty("diversity");
@@ -53,9 +62,9 @@ public class ScatterSearch {
                 Utility.divMeasure = Utility.DivMeasure_PDistance;
             else
                 Utility.divMeasure = Utility.DivMeasure_HamDistance;
-
+            System.out.println("Read configurations from config.txt.");
         } catch (Exception e) {
-            System.out.println("Could not read config file");
+            System.out.println("Using hard-coded default configuration.");
         }
 
         //
